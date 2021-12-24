@@ -43,18 +43,21 @@ matches = matcher.match(desc1,desc2)
 # print(matches)
 goodMatch = []
 for m in matches:
-    if m.distance < 0.7:
+    if m.distance < 0.8:
         goodMatch.append(m)
 # print(goodMatch)
 
+imageMatches = cv2.drawMatches(Kp1,LeftImg RightImg,Kp2,matches,None)
 
-im1= cv2.resize(resizedRight,(960,540))
-im2 = cv2.resize(resizedLeft,(960,540))
+# im1= cv2.resize(resizedRight,(960,540))
+# im2 = cv2.resize(resizedLeft,(960,540))
 
+
+im1= cv2.resize(imageMatches,(960,540))
 
 
 cv2.imshow('right',im1)
-cv2.imshow('left',im2)
+# cv2.imshow('left',im2)
 cv2.waitKey(0)
 
 
