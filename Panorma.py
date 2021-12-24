@@ -37,6 +37,15 @@ orb = cv2.ORB_create()
 Kp1 , desc1 = orb.detectAndCompute(GrayRight,None)
 Kp2 , desc2 = orb.detectAndCompute(GrayLeft,None)
 
+matcher = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
+matches = matcher.match(desc1,desc2)
+
+# print(matches)
+goodMatch = []
+for m in matches:
+    if m.distance < 0.7:
+        goodMatch.append(m)
+# print(goodMatch)
 
 
 im1= cv2.resize(resizedRight,(960,540))
